@@ -1,0 +1,22 @@
+name: Summary action
+on: workflow_call
+jobs:
+  inputs:
+    numbers:
+      description: 'JSON array of numbers as string or something'
+      required: true
+  outputs:
+    summary:
+      description: 'json helper :)'
+      value: ${{ steps.set-output.outputs.summary }}
+  runs: ubuntu-latest
+  using: "composite"
+  steps:
+    - name: Run python summarizer (stdin)
+      shell: bash
+      run: echo "${{ inputs.numbers }}" | python3 ci/print_summary.py > summary.json cat summary.json
+    - name: Set output
+      id: set-output
+      shell: bash
+      run: echo "summary=$(cat summary.json)" >> $GITHUB_OUTPUT
+        
