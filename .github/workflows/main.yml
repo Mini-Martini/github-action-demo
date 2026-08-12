@@ -22,10 +22,11 @@ jobs:
       needs: Build
       steps:
         - name: Download code
-          uses: action/download-artifact@v4
+          uses: actions/download-artifact@v4
           with:
             name: location
             path: .
+            include-hidden-files: true
         - name: Run linting
           uses: super-linter/super-linter/slim@v7
           env:
