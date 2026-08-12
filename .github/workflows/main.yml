@@ -21,10 +21,6 @@ jobs:
           name: code
           path: .
           include-hidden-files: true
-      - name: build docker
-        run: bash ci/build-docker.sh
-      - name: push docker
-        run: bash ci/push-docker.sh
   Linting:
       runs-on: ubuntu-latest
       needs: Build
@@ -52,6 +48,10 @@ jobs:
         with:
           name: code
           path: .
+      - name: build docker
+        run: bash ci/build-docker.sh
+      - name: push docker
+        run: bash ci/push-docker.sh
   
             
   
