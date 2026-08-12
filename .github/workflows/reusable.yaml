@@ -14,9 +14,6 @@ on:
       summary_text:
         description: 'Human-readable summary text'
         value: ${{ jobs.summarize.outputs.summary_text }}
-
-  workflow_dispatch:
-    
     
 jobs:
   summarize:
